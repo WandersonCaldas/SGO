@@ -5,3 +5,9 @@ CREATE TABLE `db_sgo`.`tbl_empresa` (
   `cod_ativo` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`cod_empresa`),
   UNIQUE INDEX `txt_empresa_UNIQUE` (`txt_empresa` ASC));
+
+/*-------------------------------------------------------------------*/
+
+ALTER TABLE `db_sgo`.`tbl_empresa` 
+ADD COLUMN `txt_cnpj` VARCHAR(14) NOT NULL AFTER `txt_descricao`,
+ADD UNIQUE INDEX `txt_cnpj_UNIQUE` (`txt_cnpj_UNIQUE` ASC);

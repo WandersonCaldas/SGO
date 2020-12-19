@@ -1,0 +1,175 @@
+﻿@using SGO.Core.Application.Util
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title>SGO - @ViewBag.Title</title>
+
+        @System.Web.Optimization.Styles.Render("~/bundles/css")
+
+        @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+
+        @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+
+        @System.Web.Optimization.Scripts.Render("~/bundles/bootstrap")
+
+        @System.Web.Optimization.Scripts.Render("~/bundles/CGUUtil")
+
+        @System.Web.Optimization.Scripts.Render("~/bundles/modernizr")
+
+        @System.Web.Optimization.Scripts.Render("~/bundles/inputmask")
+
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+        <link id="CSSGlobal" rel="stylesheet" type="text/css" href="~/Content/css/global.css">
+        <link id="CSSGlobalEscuro" rel="stylesheet" type="text/css" href="~/Content/css/global_escuro.css" disabled="disabled">
+    </head>
+    <body>
+        <div id="tudo">            
+            <div id="header">
+                <div class="container">
+                    <div class="logo pull-left">
+                        <a href="@Url.Action("Index", "Home")">SGO</a>
+                        <p>SISTEMA DE GESTÃO DE OCORRÊNCIAS</p>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <div class="menu">
+                <div class="container" style="padding-bottom: 0;">
+                    <ul class="pull-left">                       
+                        <li>
+                               
+                        </li>                        
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="container">
+                <div id="Alertas">
+                    <div id="Messages">
+                    </div>
+                    
+                </div>
+                @RenderBody()
+            </div>
+            <div class="footer">
+                <div class="footer-azul2"></div>
+                <div class="footer-cinza">
+                    <div class="center-block container" style="padding-bottom: 0">
+                    <div class="row" style="padding-left: 10px;">
+                        <div class="col-md-12 left">
+                            Versão 1.0.0
+                            <p>&copy; @DateTime.Now</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalGenerica" tabindex="-1" role="dialog" aria-labelledby="GenericModalLabel" aria-hidden="true">
+            <div id="ModalGeneric-dialog" class="modal-dialog modal-lg">
+                <div id="ContentmodalGenerica" class="modal-content">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalWaiting" tabindex="-1" role="dialog" aria-labelledby="GenericModalLabel" aria-hidden="true">
+            <div id="ModalWaiting-dialog" class="modal-dialog modal-lg">
+                <div id="ContentmodalWaiting" style="margin-left:50%; margin-top:30%; width:50%">
+                    <div class="modal-body">
+                        <img src="~/Content/img/loading.gif" style="width:40px; height:40px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loadingDiv" style="display: none">
+            <img class="loader" src="~/Content/img/loading-blue-pipe.gif" alt="Loading..." />
+        </div>
+
+        <div class="div-loader" id="div-loader"></div>
+
+        <script type="text/javascript">
+
+            $.when(
+                $.get("/Scripts/cldr-data/supplemental/likelySubtags.json"),
+                $.get("/Scripts/cldr-data/main/pt/numbers.json"),
+                $.get("/Scripts/cldr-data/supplemental/numberingSystems.json"),
+                $.get("/Scripts/cldr-data/main/pt/ca-gregorian.json"),
+                $.get("/Scripts/cldr-data/main/pt/timeZoneNames.json"),
+                $.get("/Scripts/cldr-data/supplemental/timeData.json"),
+                $.get("/Scripts/cldr-data/supplemental/weekData.json")
+            ).then(function() {
+
+                // Normalize $.get results, we only need the JSON, not the request statuses.
+                return [].slice.apply(arguments, [0]).map(function(result) {
+                    return result[0];
+                });
+
+            }).then(Globalize.load).then(function() {
+                Globalize.locale("pt");
+            });
+
+            $('#CSSGlobalEscuro').prop("disabled", true);
+
+            $("#Alertas").delay(8000).fadeOut();
+            $(document).ready(function() {
+
+                $('#div-loader').hide();
+
+                $(".datepicker").datepicker({
+                    changeMonth: true,
+                    dateFormat: 'dd/mm/yy',
+                    nextText: '&rarr;',
+                    prevText: '&larr;',
+                    monthNamesShort: [
+                        'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                        'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'
+                    ],
+                    dayNamesMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+                    currentText: 'Hoje',
+                    showOtherMonths: true,
+                    changeYear: true,
+                    numberOfMonths: 1,
+                    //maxDate: "0",
+                    defaultDate: new Date()
+                });
+            });
+            
+
+            $('form').submit(function() {
+                if ($(this).validate().checkForm() && !$(this).hasClass('prevent-loader'))
+                    $('#div-loader').show();
+            });
+
+            function fazerLogOut() {
+
+                if (confirm('@SGO.Core.Response.ResponseMensagem.MN008.Texto')) {
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '/Login/LogOut',
+                        beforeSend: () => showLoading(),
+                        success: (data) => {
+                            if (data && data.ok) location.reload();
+                        },
+                        error: err => {
+                            console.log(err);
+                            hideLoading();
+                        }
+                    });
+                }
+            }
+
+        </script>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

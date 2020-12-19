@@ -1,0 +1,28 @@
+ALTER TABLE `db_sgo`.`tbl_perfil` 
+CHANGE COLUMN `cod_perfil` `cod_perfil` INT(11) NOT NULL ;
+/*-------------------------------------------------------------------*/
+
+ALTER TABLE `db_sgo`.`tbl_empresa` 
+CHANGE COLUMN `cod_empresa` `cod_empresa` INT(11) NOT NULL ;
+
+/*---------------------------------------------------------------------*/
+
+INSERT INTO `db_sgo`.`tbl_perfil` (`cod_perfil`,`txt_perfil`)VALUES(1,'ADMINISTRADOR');
+INSERT INTO `db_sgo`.`tbl_perfil` (`cod_perfil`,`txt_perfil`)VALUES(2,'EMPRESA');
+
+/*---------------------------------------------------------------------*/
+
+INSERT INTO `db_sgo`.`tbl_empresa` (`cod_empresa`, `txt_empresa`, `txt_descricao`, `txt_cnpj`) VALUES (1, 'IKHON', 'IKHON GESTAO CONHECIMENTOS E TECNOLOGIA LTDA', '05355405000166');
+
+/*---------------------------------------------------------------------*/
+
+INSERT INTO `db_sgo`.`tbl_usuario`(`txt_usuario`,`txt_email`,`txt_senha`,`cod_perfil`)
+VALUES('Wanderson Caldas','wcaldasti@gmail.com','abcd1234',1);
+
+INSERT INTO `db_sgo`.`tbl_usuario`(`txt_usuario`,`txt_email`,`txt_senha`,`cod_perfil`,`cod_empresa`)
+VALUES('Geraldo Júnior','junior@ikhon.com.br','abcd1234',2,1);
+
+INSERT INTO `db_sgo`.`tbl_usuario`(`txt_usuario`,`txt_email`,`txt_senha`,`cod_perfil`,`cod_empresa`)
+VALUES('Flávio Frota','flavio.frota@ikhon.com.br','abcd1234',2,1);
+
+/*----------------------------------------------------------------------------------------------*/

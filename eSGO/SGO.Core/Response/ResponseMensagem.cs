@@ -15,6 +15,7 @@ namespace SGO.Core.Response
         public static readonly ResponseMensagem MN005 = new ResponseMensagem("MN005", "{0} inválido.");
         public static readonly ResponseMensagem MN006 = new ResponseMensagem("MN006", "{0} inválida.");
         public static readonly ResponseMensagem MN007 = new ResponseMensagem("MN007", "{0} já está cadastrada.");
+        public static readonly ResponseMensagem MN008 = new ResponseMensagem("MN008", "Deseja sair do sistema?");
 
         private string _codigo, _txt;
         private ResponseMensagem(string codigo, string txt)
