@@ -4,3 +4,7 @@
 /eSGO/SGO.Core/bin/Debug
 /eSGO/SGO.Core/bin/Release
 /eSGO/SGO.UI.Web/obj
+/eSGO/SGO.UI.Web/bin/SGO.UI.Web.dll
+/eSGO/SGO.UI.Web/bin/SGO.UI.Web.pdb
+/eSGO/SGO.UI.Web/bin/SGO.Core.dll
+/eSGO/SGO.UI.Web/bin/SGO.Core.pdb
