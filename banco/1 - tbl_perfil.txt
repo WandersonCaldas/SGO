@@ -1,0 +1,6 @@
+CREATE TABLE `db_sgo`.`tbl_perfil` (
+  `cod_perfil` INT NOT NULL AUTO_INCREMENT,
+  `txt_perfil` VARCHAR(45) NOT NULL,
+  `cod_ativo` INT NOT NULL DEFAULT 1,
+  PRIMARY KEY (`cod_perfil`),
+  UNIQUE INDEX `txt_perfil_UNIQUE` (`txt_perfil` ASC));

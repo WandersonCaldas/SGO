@@ -1,0 +1,7 @@
+CREATE TABLE `db_sgo`.`tbl_empresa` (
+  `cod_empresa` INT NOT NULL AUTO_INCREMENT,
+  `txt_empresa` VARCHAR(45) NOT NULL,
+  `txt_descricao` VARCHAR(1000) NULL,
+  `cod_ativo` INT NOT NULL DEFAULT 1,
+  PRIMARY KEY (`cod_empresa`),
+  UNIQUE INDEX `txt_empresa_UNIQUE` (`txt_empresa` ASC));

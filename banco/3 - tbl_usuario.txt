@@ -1,0 +1,15 @@
+CREATE TABLE `tbl_usuario` (
+  `cod_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `txt_usuario` varchar(45) NOT NULL,
+  `txt_email` varchar(255) NOT NULL,
+  `txt_senha` varchar(45) NOT NULL,
+  `cod_ativo` int(11) NOT NULL DEFAULT 1,
+  `cod_perfil` int(11) NOT NULL,
+  `cod_empresa` int(11) NOT NULL,
+  PRIMARY KEY (`cod_usuario`),
+  UNIQUE KEY `txt_email_UNIQUE` (`txt_email`),
+  KEY `FK_tbl_usuario_tbl_perfil_idx` (`cod_perfil`),
+  KEY `FK_tbl_usuario_tbl_empresa_idx` (`cod_empresa`),
+  CONSTRAINT `FK_tbl_usuario_tbl_empresa` FOREIGN KEY (`cod_empresa`) REFERENCES `tbl_empresa` (`cod_empresa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_tbl_usuario_tbl_perfil` FOREIGN KEY (`cod_perfil`) REFERENCES `tbl_perfil` (`cod_perfil`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
