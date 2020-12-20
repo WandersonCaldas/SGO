@@ -10,8 +10,8 @@ namespace SGO.Core.Model
     {
         public tbl_usuario()
         {
-            tbl_perfil = new tbl_perfil();
-            tbl_empresa = new tbl_empresa();
+            this.tbl_perfil = new tbl_perfil();
+            this.tbl_empresa = new tbl_empresa();
         }
         public int cod_usuario{ get; set; }
         public string txt_usuario { get; set; }

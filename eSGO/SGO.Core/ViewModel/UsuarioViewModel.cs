@@ -11,8 +11,9 @@ namespace SGO.Core.ViewModel
     {
         public UsuarioViewModel()
         {
-            Perfil = new PerfilViewModel();
-            Empresa = new EmpresaViewModel();           
+            this.Perfil = new PerfilViewModel();
+            this.Empresa = new EmpresaViewModel();
+            this.Result = new ResultViewModel();
         }
 
         //tbl_usuario
@@ -34,14 +35,12 @@ namespace SGO.Core.ViewModel
         public int cod_ativo { get; set; }
         [Required]
         [Display(Name = "Perfil")]
-        public int cod_perfil { get; set; }
-        [Required]
+        public int cod_perfil { get; set; }        
         [Display(Name = "Empresa")]
-        public int cod_empresa { get; set; }
+        public int? cod_empresa { get; set; }
         public PerfilViewModel Perfil { get; set; }
-        public EmpresaViewModel Empresa { get; set; }
-        public string status { get; set; }
-        public string mensagem { get; set; }
+        public EmpresaViewModel Empresa { get; set; }        
+        public ResultViewModel Result { get; set; }
 
     }
 }

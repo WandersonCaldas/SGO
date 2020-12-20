@@ -9,6 +9,10 @@ namespace SGO.Core.ViewModel
 {
     public class EmpresaViewModel
     {
+        public EmpresaViewModel()
+        {
+            this.Result = new ResultViewModel();
+        }
         //tbl_empresa
         [Key]
         public int cod_empresa { get; set; }
@@ -21,7 +25,6 @@ namespace SGO.Core.ViewModel
         [Required]
         [Display(Name = "Ativo")]
         public int cod_ativo { get; set; }
-        public string status { get; set; }
-        public string mensagem { get; set; }
+        public ResultViewModel Result { get; set; }
     }
 }

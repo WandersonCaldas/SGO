@@ -9,6 +9,12 @@ namespace SGO.Core.ViewModel
 {
     public class LoginViewModel
     {
+        public LoginViewModel()
+        {
+            this.Result = new ResultViewModel();
+            this.Usuario = new UsuarioViewModel();
+        }
+
         [Required]
         [Display(Name = "E-mail")]
         [EmailAddress]
@@ -16,6 +22,8 @@ namespace SGO.Core.ViewModel
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
-        public string txt_senha { get; set; }
+        public string txt_senha { get; set; }    
+        public ResultViewModel Result { get; set; }
+        public UsuarioViewModel Usuario { get; set; }
     }
 }

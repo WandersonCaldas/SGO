@@ -18,6 +18,8 @@ namespace SGO.Core.Application.AutoMapper
                 .ConvertUsing(x => (x ?? "").Trim());
 
             CreateMap<PerfilViewModel, tbl_perfil>();
+            CreateMap<EmpresaViewModel, tbl_empresa>();
+            CreateMap<UsuarioViewModel, tbl_usuario>();
         }
     }
 }

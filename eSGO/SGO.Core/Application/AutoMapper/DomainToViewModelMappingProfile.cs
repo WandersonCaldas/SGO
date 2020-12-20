@@ -14,6 +14,8 @@ namespace SGO.Core.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<tbl_perfil, PerfilViewModel>();
+            CreateMap<tbl_empresa, EmpresaViewModel>();
+            CreateMap<tbl_usuario, UsuarioViewModel>();
         }
     }
 }

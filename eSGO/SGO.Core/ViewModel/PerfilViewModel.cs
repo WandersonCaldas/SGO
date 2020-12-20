@@ -9,6 +9,11 @@ namespace SGO.Core.ViewModel
 {
     public class PerfilViewModel
     {
+        public PerfilViewModel()
+        {
+            this.Result = new ResultViewModel();
+        }
+
         //tbl_perfil
         [Key]
         public int cod_perfil { get; set; }
@@ -19,7 +24,6 @@ namespace SGO.Core.ViewModel
         [Required]
         [Display(Name = "Ativo")]
         public int cod_ativo { get; set; }
-        public string status { get; set; }
-        public string mensagem { get; set; }
+        public ResultViewModel Result { get; set; }
     }
 }

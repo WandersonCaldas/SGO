@@ -68,6 +68,7 @@
     <Compile Include="Application\AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="Application\AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Application\AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Application\Interfaces\IUsuario.cs" />
     <Compile Include="Application\Util\Extensions.cs" />
     <Compile Include="Application\Util\TimeSpanUtil.cs" />
     <Compile Include="Helpers\Util.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Model\tbl_perfil.cs" />
     <Compile Include="Model\tbl_usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regra\RegraUsuario.cs" />
     <Compile Include="Repository\Context\Conexao.cs" />
     <Compile Include="Repository\tbl_empresa.cs" />
     <Compile Include="Repository\tbl_perfil.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="ViewModel\EmpresaViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\PerfilViewModel.cs" />
+    <Compile Include="ViewModel\ResultViewModel.cs" />
     <Compile Include="ViewModel\UsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

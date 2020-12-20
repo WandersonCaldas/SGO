@@ -17,7 +17,11 @@ namespace SGO.UI.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             AutoMapperConfig.RegisterMappings();
-            BundleConfig.RegisterBundles(BundleTable.Bundles);            
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(
+                typeof(decimal), new DecimalModelBinder());
+            ModelBinders.Binders.Add(
+                typeof(decimal?), new DecimalModelBinder());
         }
     }
 }

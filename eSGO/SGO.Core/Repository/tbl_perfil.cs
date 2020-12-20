@@ -10,16 +10,16 @@ namespace SGO.Core.Repository
 {
     public class tbl_perfil
     {
-        public List<tbl_perfil> Listar()
+        public List<Model.tbl_perfil> Listar()
         {
             var cn = Conexao.GetInstance().GetConnection;
-            return cn.Query<tbl_perfil>("SELECT * FROM tbl_perfil").ToList();
+            return cn.Query<Model.tbl_perfil>("SELECT * FROM tbl_perfil").ToList();
         }
 
-        public tbl_perfil Consultar(int id)
+        public Model.tbl_perfil Consultar(int id)
         {
             var cn = Conexao.GetInstance().GetConnection;
-            return cn.Query<tbl_perfil>("SELECT * FROM tbl_perfil WHERE cod_perfil = " + id).FirstOrDefault();
+            return cn.Query<Model.tbl_perfil>("SELECT * FROM tbl_perfil WHERE cod_perfil = " + id).FirstOrDefault();
         }
     }
 }
