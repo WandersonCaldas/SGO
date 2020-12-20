@@ -26,4 +26,20 @@ namespace SGO.Core.ViewModel
         public ResultViewModel Result { get; set; }
         public UsuarioViewModel Usuario { get; set; }
     }
+
+    public class RecuperarSenhaViewModel
+    {
+        public RecuperarSenhaViewModel()
+        {
+            this.Result = new ResultViewModel();
+            this.Usuario = new UsuarioViewModel();
+        }
+
+        [Required]
+        [Display(Name = "E-mail")]
+        [EmailAddress]
+        public string txt_email { get; set; }       
+        public ResultViewModel Result { get; set; }
+        public UsuarioViewModel Usuario { get; set; }
+    }
 }

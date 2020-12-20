@@ -1,2 +1,2 @@
 # SGO
-Sistema de gestão ocorrências. Responsável por controlar horas trabalhadas.
+Sistema de gestão de ocorrências. Responsável por controlar horas trabalhadas.

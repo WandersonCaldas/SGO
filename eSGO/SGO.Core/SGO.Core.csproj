@@ -69,6 +69,7 @@
     <Compile Include="Application\AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Application\AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Application\Interfaces\IUsuario.cs" />
+    <Compile Include="Application\Util\Email.cs" />
     <Compile Include="Application\Util\Extensions.cs" />
     <Compile Include="Application\Util\TimeSpanUtil.cs" />
     <Compile Include="Helpers\Util.cs" />

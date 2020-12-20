@@ -22,7 +22,7 @@ namespace SGO.UI.Web.Controllers
         public ActionResult LogOut()
         {
             Session.Abandon();
-            return RedirectToAction("Login", "Index");
+            return Json(new { ok = true }, JsonRequestBehavior.AllowGet);
         }
 
         [AllowAnonymous]
@@ -49,7 +49,9 @@ namespace SGO.UI.Web.Controllers
             {                
                 Session["cod_usuario"] = retorno.Usuario.cod_usuario;
                 Session["txt_nome"] = retorno.Usuario.txt_usuario;
+                Session["txt_email"] = retorno.Usuario.txt_email;
                 Session["cod_perfil"] = retorno.Usuario.cod_perfil;
+                Session["cod_empresa"] = retorno.Usuario.cod_empresa;
             }
             else if(retorno.Result.status.Equals(ResponseStatus.FALHA.Texto))
             {
@@ -58,6 +60,38 @@ namespace SGO.UI.Web.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }        
+
+
+        [AllowAnonymous]
+        public ActionResult RecuperarSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecuperarSenha(RecuperarSenhaViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            RecuperarSenhaViewModel retorno = new RecuperarSenhaViewModel();
+            retorno = _usuarioService.RecuperarSenha(model.txt_email);
+
+            if (retorno.Result.status.Equals(ResponseStatus.FALHA.Texto))
+            {
+                ViewBag.Message = retorno.Result.mensagem;
+                return View(model);
+            }
+
+            ViewBag.Status = retorno.Result.status;
+            ViewBag.Message = retorno.Result.mensagem;
+            ViewBag.Url = "/Login";
+            return View();
         }
     }
 }

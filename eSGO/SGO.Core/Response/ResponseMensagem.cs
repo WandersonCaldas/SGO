@@ -16,6 +16,10 @@ namespace SGO.Core.Response
         public static readonly ResponseMensagem MN006 = new ResponseMensagem("MN006", "{0} INVÁLIDA.");
         public static readonly ResponseMensagem MN007 = new ResponseMensagem("MN007", "{0} JÁ ESTÁ CADASTRADA.");
         public static readonly ResponseMensagem MN008 = new ResponseMensagem("MN008", "DESEJA SAIR DO SISTEMA?");
+        public static readonly ResponseMensagem MN009 = new ResponseMensagem("MN009", "SENHA ENVIADA PARA O E-MAIL INFORMADO.");
+        public static readonly ResponseMensagem MN010 = new ResponseMensagem("MN010", "Sistema de Gestão de Ocorrências");
+        public static readonly ResponseMensagem MN011 = new ResponseMensagem("MN011", "SGO");
+        public static readonly ResponseMensagem MN012 = new ResponseMensagem("MN012", "SENHA ALTERADA COM SUCESSO.");
 
         private string _codigo, _txt;
         private ResponseMensagem(string codigo, string txt)

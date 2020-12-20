@@ -1,15 +1,15 @@
 ﻿@model SGO.Core.ViewModel.LoginViewModel
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Alterar Senha";
 }
 
 <br /><br />
 
 <div class="well col-md-6 col-md-offset-3 col-xs-12">
-    <h2 class="col-md-12 text-center">@SGO.Core.Response.ResponseMensagem.MN010.Texto</h2>
+    <h2 class="col-md-12 text-center">@ViewBag.Title</h2>
     <br /><br /><br />
 
-    @using (Html.BeginForm("Index", "Login", FormMethod.Post, htmlAttributes: new { @class = "form col-md-12" }))
+    @using (Html.BeginForm("AlterarSenha", "Home", FormMethod.Post, htmlAttributes: new { @class = "form col-md-12" }))
     {
         @Html.AntiForgeryToken()
 
@@ -17,8 +17,7 @@
             <div class="form-group col-md-12">
                 @Html.Label(String.Empty, "E-mail*:", new { @class = "col-md-12 control-label" })
                 <div class="col-md-12">
-                    @Html.TextBoxFor(x => x.txt_email, new { @class = "form-control", @type = "text" })
-                    @Html.ValidationMessageFor(c => c.txt_email)
+                    <span class="form-control">@Session["txt_email"]</span>                                   
                 </div>
             </div>
         </div>
@@ -31,13 +30,11 @@
                     @Html.ValidationMessageFor(c => c.txt_senha)
                 </div>
             </div>
-        </div>
-
-        <center><a href="@Url.Action("RecuperarSenha", "Login")">Recuperar Senha</a></center>
+        </div>       
 
         <div class="row">
             <div class="col text-center">
-                <button class="btn btn-primary">Entrar</button>
+                <button class="btn btn-primary">Salvar</button>
             </div>
         </div>
     }
